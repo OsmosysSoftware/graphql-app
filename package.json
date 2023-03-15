@@ -1,0 +1,17 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "My Node.js app with frontend and backend folders",
+  "private": true,
+  "workspaces": [
+    "library-graphql-server",
+    "library-graphql-client"
+  ],
+  "scripts": {
+    "dev": "npm run dev:backend && npm run dev:frontend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
