@@ -1,4 +1,8 @@
 node_modules
-*/env.ts
-*/.env
-*/dist
+prisma/migrations
+dist
+env.d.ts
+
+# Keep environment variables out of version control
+.env
+
