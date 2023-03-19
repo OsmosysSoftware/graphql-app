@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "prisma": {
-    "seed": "node --loader ts-node/esm prisma/data.ts"
+    "seed": "node --loader ts-node/esm prisma/seed.ts"
   },
   "scripts": {
     "clean": "rimraf dist",
