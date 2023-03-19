@@ -6,6 +6,7 @@ const Book = builder.prismaObject("Book", {
     name: t.exposeString("name"),
     description: t.exposeString("description", { nullable: true }),
     isbn: t.exposeString("isbn"),
+    genres: t.relation("genres"),
     authors: t.relation("authors"),
   }),
 });
