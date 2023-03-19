@@ -26,6 +26,17 @@ const Query = builder.queryType({
         });
       },
     }),
+    author: t.prismaField({
+      type: "Author",
+      args: { id: t.arg.int({ required: true }) },
+      resolve: async (_, __, args) => {
+        return await prisma.author.findUniqueOrThrow({
+          where: {
+            id: args.id,
+          },
+        });
+      },
+    }),
   }),
 });
 
