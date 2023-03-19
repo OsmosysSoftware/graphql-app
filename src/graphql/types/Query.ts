@@ -15,6 +15,17 @@ const Query = builder.queryType({
         return await prisma.author.findMany();
       },
     }),
+    book: t.prismaField({
+      type: "Book",
+      args: { id: t.arg.int({ required: true }) },
+      resolve: async (_, __, args) => {
+        return await prisma.book.findUniqueOrThrow({
+          where: {
+            id: args.id,
+          },
+        });
+      },
+    }),
   }),
 });
 
