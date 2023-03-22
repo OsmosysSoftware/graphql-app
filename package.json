@@ -5,6 +5,8 @@
   "type": "module",
   "prisma": {
     "seed": "node --loader ts-node/esm prisma/seed.ts"
+    
+    
   },
   "scripts": {
     "clean": "rimraf dist",
@@ -14,7 +16,7 @@
     "predev": "npm run clean",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\""
   },
-  "author": "",
+  "author": "ayush",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.15.3",
