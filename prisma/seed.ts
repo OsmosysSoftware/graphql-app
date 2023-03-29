@@ -1,62 +1,29 @@
 import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient({});
+import { authors, books, booksAndAuthors, booksAndGenres, genres } from "./seedData.js";
+const prisma = new PrismaClient();
 const seed = async () => {
-  try {
-    await prisma.book.create({
-      data: {
-        name: "Book 1",
-        description: "description for book 1",
-        authors: {
-          create: [
-            {
-              author: {
-                connectOrCreate: {
-                  where: { name: "Author X" },
-                  create: {
-                    name: "Author X",
-                    email: "authorx@example.com",
-                  },
-                },
-              },
-            },
-            {
-              author: {
-                connectOrCreate: {
-                  where: { name: "Author Y" },
-                  create: {
-                    name: "Author Y",
-                    email: "authorY@example.com",
-                  },
-                },
-              },
-            },
-          ],
-        },
-        genres: {
-          create: [
-            {
-              genre: {
-                create: {
-                  name: "FICTION",
-                },
-              },
-            },
-            {
-              genre: {
-                create: {
-                  name: "THRILLER",
-                },
-              },
-            },
-          ],
-        },
-      },
-    });
-  } catch (e) {
-    console.error(e);
-  } finally {
-    await prisma.$disconnect();
+
+  await prisma.book.createMany({
+    data: books
+  })
+  await prisma.author.createMany({
+    data: authors
+  })
+  await prisma.genre.createMany({
+    data: genres
+
+  })
+  for(const relation of booksAndAuthors){
+    await prisma.booksAndAuthors.create({
+      data:relation
+    })
   }
-};
+  for(const relation of booksAndGenres){
+    await prisma.booksAndGenres.create({
+      data:relation
+    })
+  }
+
+
+}
 await seed();
