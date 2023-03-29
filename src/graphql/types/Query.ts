@@ -3,11 +3,18 @@ import builder from "../../utils/schemaBuilder.js";
 
 const Query = builder.queryType({
   fields: (t) => ({
-    books: t.prismaField({
-      type: ["Book"],
-      resolve: async () => {
-        return await prisma.book.findMany();
-      },
+    // books: t.prismaField({
+    //   type: ["Book"],
+    //   resolve: async () => {
+    //     return await prisma.book.findMany();
+    //   },
+    // }),
+    books:t.prismaConnection({
+      type:"Book",
+      cursor:"id",
+      resolve:async (query)=>{
+        return await prisma.book.findMany({...query});
+      }
     }),
     authors: t.prismaField({
       type: ["Author"],
