@@ -16,11 +16,19 @@ const Query = builder.queryType({
         return await prisma.book.findMany({...query});
       }
     }),
-    authors: t.prismaField({
-      type: ["Author"],
-      resolve: async () => {
-        return await prisma.author.findMany();
-      },
+    // authors: t.prismaField({
+    //   type: ["Author"],
+      
+    //   resolve: async () => {
+    //     return await prisma.author.findMany();
+    //   },
+    // }),
+    authors:t.prismaConnection({
+      type: "Author",
+      cursor:"id",
+      resolve:async (query)=>{
+        return await prisma.author.findMany({...query});
+      }
     }),
     book: t.prismaField({
       type: "Book",
