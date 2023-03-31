@@ -1,7 +1,6 @@
 import prisma from "../../utils/PrismaClient.js";
 import builder from "../../utils/schemaBuilder.js";
-
-const Query = builder.queryType({
+builder.queryType({
   fields: (t) => ({
     // books: t.prismaField({
     //   type: ["Book"],
@@ -9,26 +8,26 @@ const Query = builder.queryType({
     //     return await prisma.book.findMany();
     //   },
     // }),
-    books:t.prismaConnection({
-      type:"Book",
-      cursor:"id",
-      resolve:async (query)=>{
-        return await prisma.book.findMany({...query});
-      }
+    books: t.prismaConnection({
+      type: "Book",
+      cursor: "id",
+      resolve: async (query) => {
+        return await prisma.book.findMany({ ...query });
+      },
     }),
     // authors: t.prismaField({
     //   type: ["Author"],
-      
+
     //   resolve: async () => {
     //     return await prisma.author.findMany();
     //   },
     // }),
-    authors:t.prismaConnection({
+    authors: t.prismaConnection({
       type: "Author",
-      cursor:"id",
-      resolve:async (query)=>{
-        return await prisma.author.findMany({...query});
-      }
+      cursor: "id",
+      resolve: async (query) => {
+        return await prisma.author.findMany({ ...query });
+      },
     }),
     book: t.prismaField({
       type: "Book",
@@ -54,5 +53,3 @@ const Query = builder.queryType({
     }),
   }),
 });
-
-export default Query;
