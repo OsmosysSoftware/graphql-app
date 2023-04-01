@@ -1,10 +1,10 @@
-import "./types/Query.js";
-import "./types/Book.js";
-import "./types/Author.js";
-import "./types/Genre.js";
-import "./types/BooksAndAuthors.js";
-import "./types/BooksAndGenres.js";
-import "./types/Mutation.js";
+import "./Types/Book.js";
+import "./Types/Author.js";
+import "./Types/Genre.js";
+import "./Types/BooksAndAuthors.js";
+import "./Types/BooksAndGenres.js";
+import "./Mutations/index.js";
+import "./Queries/index.js";
 
 import builder from "../utils/schemaBuilder.js";
 const schema = builder.toSchema();

@@ -12,7 +12,7 @@ export const BookInput = builder.inputType("bookInput", {
     description: t.string(),
   }),
 });
-export const genreInput = builder.inputType("genreType", {
+export const GenreInput = builder.inputType("genreType", {
   fields: (t) => ({
     name: t.string({ required: true }),
   }),

@@ -1,24 +1,22 @@
 import prisma from "../../../utils/PrismaClient.js";
 import builder from "../../../utils/schemaBuilder.js";
-import { AuthorInput, BookInput, genreInput } from "../../types/input.js";
+import { AuthorInput, BookInput, GenreInput } from "../../Types/input.js";
 
-builder.mutationField("addBook", (t) =>
+builder.mutationField("createBook", (t) =>
   t.prismaField({
     type: "Book",
     args: {
       book: t.arg({ type: BookInput, required: true }),
       authors: t.arg({ type: [AuthorInput], required: true }),
-      genres: t.arg({ type: [genreInput] }),
+      genres: t.arg({ type: [GenreInput] }),
     },
 
     resolve: async (_, __, args) => {
       const { name: bookName, description: bookDescription } = args.book;
       const { genres, authors } = args;
 
-      return await prisma.book.upsert({
-        where: { name: bookName },
-        update: { name: bookName },
-        create: {
+      return await prisma.book.create({
+        data: {
           name: bookName,
           description: bookDescription,
           authors: {
