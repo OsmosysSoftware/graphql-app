@@ -5,8 +5,8 @@ import type PrismaTypes from "@pothos/plugin-prisma/generated.js";
 import RelayPlugin from "@pothos/plugin-relay";
 
 const builder = new SchemaBuilder<{ PrismaTypes: PrismaTypes }>({
-  plugins: [PrismaPlugin,RelayPlugin],
-  relayOptions:{},
+  plugins: [PrismaPlugin, RelayPlugin],
+  relayOptions: {},
   prisma: {
     client: prisma,
     filterConnectionTotalCount: true,

@@ -5,20 +5,17 @@ builder.mutationField("deleteBook", (t) =>
   t.prismaField({
     type: "Book",
     args: {
-      id: t.arg.int({ required: true }),
+      id: t.arg.int(),
+      name: t.arg.string(),
     },
 
     resolve: async (_, __, args) => {
-      try {
-        const { id } = args;
-        return await prisma.book.delete({
-          where: {
-            id: id,
-          },
-        });
-      } catch (err) {
-        throw typeof err;
-      }
+      return await prisma.book.delete({
+        where: {
+          id: args.id ? args.id : undefined,
+          name: args.name ? args.name : undefined,
+        },
+      });
     },
   })
 );
