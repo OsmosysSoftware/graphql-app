@@ -22,4 +22,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npx eslint --ignore-pattern dist/ .
+        run: npm run lint
+
+      - name: Fix ESLint
+        run: npm run lint:fix
