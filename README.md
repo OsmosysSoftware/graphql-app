@@ -1,4 +1,4 @@
-# Library-Graphql API
+# Graphql-App API
 
 ## API for basic CRUD operations in a Library database in typescript
 
@@ -27,11 +27,11 @@ npx prisma studio
 clone the repository with
 
 ```bash
-git clone https://github.com/ayush-osmosys/library-graphql.git
-cd library-graphql
+git clone https://github.com/OsmosysSoftware/graphql-app
+cd graphql-app
 ```
 
-In the library-graphql folder create an environment file named **.env** for setting up local environment with the following variables
+In the graphql-app folder create an environment file named **.env** for setting up local environment with the following variables
 
 - DATABASE_URL="postgres://your-username:your-password@yourhost:DB_PORT/databasename"
 - PORT=4000
@@ -41,7 +41,7 @@ Make sure postgreSQL is installed and service is started
 
 ### Starting the API
 
-Make sure are in the library-graphql directory and node and npm are installed, then install the packaes with npm
+Make sure are in the graphql-app directory and node and npm are installed, then install the packaes with npm
 
 ```bash
 npm i
@@ -74,7 +74,7 @@ The GraphQL API has the following Types that abstract the underlying Database. (
 
 #### GraphQL Schema
 
-![GraphQL Schema](<./relation_view.jpeg>)
+![GraphQL Schema](./relation_view.jpeg)
 
 #### Queries
 
